@@ -129,6 +129,33 @@ body {
     .partial {
         width: 100%;
     }
+    .tech {
+        display: none;
+    }
+    .aboutWrapper {
+        bottom: 10%;
+    }
+    .photo .social {
+        display: none;
+    }
+}
+
+@media only screen and (max-height: 768px) {
+    .aboutWrapper {
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (max-height: 370px) {
+    .scrollDownWrapper {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .quoteWrapper {
+        display: none;
+    }
 }
 
 .partial {
@@ -138,8 +165,6 @@ body {
     float: left;
     margin-top: 20px;
 }
-
-@media only screen and (max-width: 1000px) {}
 
 .about {
     background-color: #393e46;
@@ -151,7 +176,7 @@ body {
 }
 
 .about .aboutItem {
-    padding: 2%;
+    padding: 1%;
 }
 
 .about .text {
@@ -159,6 +184,7 @@ body {
     text-align: center;
     padding: 0 20px;
     margin: 20px;
+    margin-right: 0;
     display: flex;
     justify-content: center;
     /* align horizontal */
@@ -169,15 +195,23 @@ body {
 .photo {
     margin-left: 20px;
     margin-right: 20px;
-    height: 100%;
+    /* height: 100%; */
     display: block;
+    /* background-image: url('http://jebnijsie.pl/pr/img/me.png');
+    background-size: cover; */
 }
 
 .authorPhoto {
     height: auto;
-    width: 200px;
+    width: 220px;
+    border: 2px #232931 solid;
     border-radius: 50%;
-    margin-top: 40px;
+    transition: .3s;
+}
+
+.authorPhoto:hover {
+    border-color: #4ecca3;
+    transform: scale(1.1);
 }
 
 .smIco {
@@ -187,6 +221,8 @@ body {
 .aboutWrapper {
     background-color: #393e46;
     min-height: 100vh;
+    /* padding-bottom: 50px; */
+    position: relative;
 }
 
 .footer {
@@ -202,7 +238,7 @@ body {
 }
 
 .footer .social .socialIco {
-    padding-left: 20px;
+    margin-left: 20px;
 }
 
 .projectsWrapper {
@@ -222,11 +258,76 @@ body {
 
 .scrollDownWrapper {
     position: absolute;
-    bottom: 80px;
+    bottom: 8%;
+    /* bottom: 80px; */
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
     width: 90vw;
 }
 
-.resume {}
+.resumeWrapper {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+}
+
+.resume {
+    border: #4ecca3 solid 2px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    width: 160px;
+    border-radius: 25px;
+    color: #eee;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.resume:hover {
+    background-color: #4ecca3;
+    color: #393e46;
+    transform: scale(1.2);
+}
+
+.tech {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 60%;
+}
+
+.clickableSocial {
+    transition: 0.3s;
+    color: #232931;
+}
+
+.clickableSocial:hover {
+    color: #4ecca3;
+    /* color: #eee; */
+    transform: scale(1.5);
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.resume:hover a {
+    color: #393e46;
+}
+
+.quote {
+    font-style: italic;
+}
+
+.photo .social {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.photo .social .socialIco {
+    margin-left: 10%;
+}

@@ -8,8 +8,21 @@ window.onbeforeunload = function() {
 window.onload = () => {
 
     initTypeWriter();
+    setAuthorPhotoSize();
     // initScroll();
     document.addEventListener('keydown', checkKey);
+    window.addEventListener("resize", setAuthorPhotoSize);
+
+}
+
+function setAuthorPhotoSize() {
+    let warpperHeight = document.querySelector('.photo').clientHeight;
+    let photoHeight = document.querySelector('.authorPhoto').clientHeight;
+
+    let margin = (warpperHeight - photoHeight) / 2;
+    // 30 is average size of social icons
+    document.getElementById('myPhoto').style.marginTop = `${margin-30}px`;
+
 
 }
 
@@ -21,7 +34,7 @@ function checkKey(e) {
         console.log('up');
         if (currPos > 0) {
             currPos--;
-            console.log(positions[currPos]);
+            // console.log(positions[currPos]);
             document.querySelector(positions[currPos]).scrollIntoView({
                 behavior: 'smooth'
             });
@@ -31,7 +44,7 @@ function checkKey(e) {
         console.log('down');
         if (currPos < 3) {
             currPos++;
-            console.log(positions[currPos]);
+            // console.log(positions[currPos]);
             document.querySelector(positions[currPos]).scrollIntoView({
                 behavior: 'smooth'
             });
