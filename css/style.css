@@ -1,0 +1,232 @@
+html {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.2em;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    line-height: 1.5rem;
+}
+
+b {
+    color: #4ecca3;
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    margin-top: 3rem;
+}
+
+h2 {
+    font-size: 2.828rem;
+    line-height: 3rem;
+    margin-top: 3rem;
+}
+
+h3 {
+    font-size: 1.414rem;
+}
+
+h4 {
+    font-size: 0.707rem;
+}
+
+h5 {
+    font-size: 0.4713333333333333rem;
+}
+
+h6 {
+    font-size: 0.3535rem;
+}
+
+body {
+    background-color: #232931;
+    color: #eeeeee;
+    margin: 0px;
+    padding: 0px;
+}
+
+.main {
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 100vh;
+    min-height: 500px;
+}
+
+.nav {
+    display: flex;
+}
+
+.navItem {
+    padding: 8px;
+    margin: 3px;
+    margin-top: 20px;
+}
+
+.navItem:first-of-type {
+    margin-right: auto;
+    margin-left: 0px;
+}
+
+.author {
+    font-size: 1.5em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.pageNav {
+    transition: 0.2s;
+}
+
+.pageNav:hover {
+    color: #4ecca3;
+    cursor: pointer;
+}
+
+.mainHeader {
+    display: inline-block;
+    margin-top: 50px;
+}
+
+.typewriterCursor {
+    color: #4ecca3;
+}
+
+.headerSubt {
+    font-size: 0.5em;
+    position: absolute;
+    line-height: 30px;
+    font-weight: 300;
+    color: #4ecca3;
+}
+
+@media only screen and (max-width: 768px) {
+    .pageNav {
+        display: none;
+    }
+    .photo {
+        display: none;
+        margin: auto;
+    }
+    .authorPhoto {
+        display: none;
+    }
+    .about {
+        flex-wrap: wrap;
+    }
+    .partial {
+        width: 100%;
+    }
+}
+
+.partial {
+    margin-bottom: 40px;
+    border: #4ecca3 solid 1px;
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 1000px) {}
+
+.about {
+    background-color: #393e46;
+    width: 100%;
+    display: flex;
+    border-top: #4ecca3 solid 1.5px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.about .aboutItem {
+    padding: 2%;
+}
+
+.about .text {
+    flex-basis: 1;
+    text-align: center;
+    padding: 0 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    /* align horizontal */
+    align-items: center;
+    /* align vertical */
+}
+
+.photo {
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100%;
+    display: block;
+}
+
+.authorPhoto {
+    height: auto;
+    width: 200px;
+    border-radius: 50%;
+    margin-top: 40px;
+}
+
+.smIco {
+    margin-top: 20px;
+}
+
+.aboutWrapper {
+    background-color: #393e46;
+    min-height: 100vh;
+}
+
+.footer {
+    background-color: #393e46;
+    text-align: center;
+    padding: 20px;
+    font-weight: 300;
+    border-top: #4ecca3 solid 1.5px;
+}
+
+.footer .social {
+    margin-top: 15px;
+}
+
+.footer .social .socialIco {
+    padding-left: 20px;
+}
+
+.projectsWrapper {
+    background-color: #232931;
+    min-height: 100vh;
+}
+
+.projects {
+    padding: 40px;
+    margin-top: 10px;
+}
+
+.aboutMe {
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.scrollDownWrapper {
+    position: absolute;
+    bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    width: 90vw;
+}
+
+.resume {}

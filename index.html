@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scrollAnimation.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>Matthias Moczala</title>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <nav class="nav">
+            <div class="navItem"><a class="author">Matthias Moczala.</a></div>
+            <div class="navItem pageNav" onclick="about()">about</div>
+            <div class="navItem pageNav" onclick="projects()">projects</div>
+            <!-- <div class="navItem pageNav">contact</div> -->
+        </nav>
+        <div class="mainHeader">
+            <h1>Hey, <br /> I'm a
+                <a id="app"></a>. <br />
+                <a class="headerSubt">(call me Matt)</a>
+            </h1>
+        </div>
+        <div class="scrollDownWrapper" onclick="about()">
+            <div class="container">
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+                <!-- <span class="textScroll">Scroll down</span> -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="aboutWrapper">
+        <div class="about" id="about">
+            <div class="aboutItem text">
+                <div style="text-align: left;">
+                    <h2 style="text-align: left; margin-top: 0px; color: #4ecca3;">
+                        about me
+                    </h2>
+                    <hr style="margin-bottom: 40px; border: #4ecca3 solid 1px; margin-top: 12px;">
+                    <text class="aboutMe">
+                        My name is Matthias Moczala, I'm 18 years old programmer and student. I spcialize in <b>web</b> development and <b>server-side</b> programming, I've been doing it since I was 13 years old. When I turned 15, I started doing simple on-order websites. What started as my <b>passion and hobby</b> turned out to be an amazing work opportunity.
+
+                        <br /><br />
+
+                        In my spare time I like to Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae fugiat deleniti perspiciatis ducimus accusamus amet accusantium minus cumque, ut optio velit fugit quas incidunt quia! Et ea assumenda molestias recusandae! 
+                    </text>
+                </div>
+            </div>
+            <div class="photo aboutItem">
+                <img src="img/me.png" alt="Photo of me." class="authorPhoto">
+            </div>
+        </div>
+        <div class="resume">
+            Get my resume
+        </div>
+    </div>
+    <div class="projectsWrapper">
+        <div class="projects">
+            <h2 style="text-align: left; margin-top: 0px; color: #4ecca3;">
+                projects
+            </h2>
+            <hr class="partial">
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            &copy; Maciej Moczała - All rights reserved
+            <br>
+            <div class="social">
+                <a style="color: #4ecca3;" href="https://www.facebook.com/maciek.moczala" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a style="color: #4ecca3;" href="https://twitter.com/m_moczala" target="_blank"><i class="fab fa-twitter socialIco"></i></a>
+                <a style="color: #4ecca3;" href="https://bitbucket.org/maciejMoczala/" target="_blank"><i class="fab fa-bitbucket socialIco"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
