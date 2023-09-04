@@ -4,32 +4,101 @@
 //  Created on 6.10.2019 by Matt Moczala
 //
 
-// I know this is spaghetti code, that sucks. 
-// All I can say is: I was in fuckin' hurry. 
-
-
 let positions = ['.nav', '.about', '.projects', '.footer'];
 let currPos = 0;
 let aboutTyped = false,
     projectsTyped = false;
+let globe,
+    globeCount = 0;
 
 
 // scrollTop before load, to make sure website is at top
-window.onbeforeunload = function() {
+window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }
 
 // Initialize some scripts
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", () => {
+
 
     AOS.init({
         once: true
     });
     initTypeWriter();
     setAuthorPhotoSize();
-    // initScroll();
     document.addEventListener('keydown', checkKey);
     window.addEventListener("resize", setAuthorPhotoSize);
+    createGlobe();
+    if( window.innerWidth < 765) {
+        setUpForMobile()
+    }
+
+})
+
+const setUpForMobile = () => {
+    document.querySelector('#navName').innerHTML = 'MM';
+}
+
+function createGlobe() {
+    globeCount++;
+
+    globe = new ENCOM.Globe(window.innerWidth > 765 ? window.innerWidth*0.6 : window.innerWidth, window.innerHeight, {
+        font: "Inconsolata",
+        data: [],
+        tiles: grid.tiles,
+        baseColor: "#000000",
+        markerColor: "#8e44ad",
+        pinColor: "#aacfd1",
+        satelliteColor: "#aacfd1",
+        scale: 1,
+        dayLength: 14000,
+        introLinesDuration: 2000,
+        maxPins: 500,
+        maxMarkers: 4,
+        viewAngle: 0.1
+    });
+
+    $("#globe").append(globe.domElement);
+    globe.init(start);
+}
+
+function onWindowResize() {
+    globe.camera.aspect = window.innerWidth / window.innerHeight;
+    globe.camera.updateProjectionMatrix();
+    globe.renderer.setSize(window.innerWidth, window.innerHeight);
+
+}
+
+function roundNumber(num) {
+    return Math.round(num * 100) / 100;
+}
+
+function projectionToLatLng(width, height, x, y) {
+
+    return {
+        lat: 90 - 180 * (y / height),
+        lon: 360 * (x / width) - 180,
+    };
+
+}
+
+function animate() {
+
+    if (globe) {
+        globe.tick();
+    }
+
+    lastTickTime = Date.now();
+
+    requestAnimationFrame(animate);
+}
+
+function start() {
+
+    if (globeCount == 1) { // only do this for the first globe that's created. very messy
+        animate();
+    }
+
 
 }
 
@@ -43,67 +112,62 @@ function isScrolledIntoView(elem) {
 }
 
 // When users scrolls to section, start typing it's header
-$(window).scroll(function() {
+$(window).scroll(function () {
 
     if (isScrolledIntoView($('#aboutmeHeader')) && !aboutTyped) {
-        //the div is now visible to user. 
         aboutTyped = true;
 
-        let app = document.getElementById('aboutmeHeader');
-
-        let typewriter = new Typewriter(app, {
-            loop: false,
-            cursorClassName: 'aboutMeCursor'
+        const app = new TypewriterLight("aboutmeHeader", {
+            speed: 200,
+            cursorSpeed: 500,
+            cursorColor: "#4ecca3",
+            endDot: true,
         });
-
-        typewriter.typeString('about me')
-            .callFunction(() => {
-                setInterval(() => {
-                    $('.aboutMeCursor').hide();
-                }, 300);
-            })
-            .start();
+    
+        app.queue.add(
+            [
+                app.wait.bind(app, 300),
+                app.type.bind(app, "about me"),
+            ],
+            false
+        );
 
     } else if (isScrolledIntoView($('#projectsHeader')) && !projectsTyped) {
         //the div is now visible to user. 
         projectsTyped = true;
 
-        aboutTyped = true;
-
-        let app = document.getElementById('projectsHeader');
-
-        let typewriter = new Typewriter(app, {
-            loop: false,
-            cursorClassName: 'projectsCursor'
+        const app = new TypewriterLight("projectsHeader", {
+            speed: 200,
+            cursorSpeed: 500,
+            cursorColor: "#4ecca3",
+            endDot: true,
         });
-
-        typewriter.typeString('projects')
-            .callFunction(() => {
-                setInterval(() => {
-                    $('.projectsCursor').hide();
-                }, 300);
-            })
-            .start();
+    
+        app.queue.add(
+            [
+                app.wait.bind(app, 300),
+                app.type.bind(app, "projects"),
+            ],
+            false
+        );
 
     }
 });
 
-// setSize of margins in felxbox, css had some issues, so here is a quick fix
 function setAuthorPhotoSize() {
     let warpperHeight = document.querySelector('.photo').clientHeight;
     let photoHeight = document.querySelector('.authorPhoto').clientHeight;
 
     let margin = (warpperHeight - photoHeight) / 2;
     // 30 is a size of social icons
-    document.getElementById('myPhoto').style.marginTop = `${margin-30}px`;
+    document.getElementById('myPhoto').style.marginTop = `${margin - 30}px`;
 
     let wrapperHeight = document.querySelector('.aboutWrapper').clientHeight;
     let aboutHeight = document.querySelector('.about').clientHeight;
     let resumeHeight = document.querySelector('.resumeWrapper').clientHeight;
 
     let quoteMargin = (wrapperHeight - aboutHeight - resumeHeight) / 2;
-    console.log(quoteMargin, wrapperHeight, aboutHeight, resumeHeight);
-    document.querySelector('.quoteWrapper').style.marginTop = `${quoteMargin-30}px`;
+    document.querySelector('.quoteWrapper').style.marginTop = `${quoteMargin - 30}px`;
 
 }
 
@@ -125,7 +189,6 @@ function checkKey(e) {
         e.preventDefault();
         if (currPos < 3) {
             currPos++;
-            // console.log(positions[currPos]);
             document.querySelector(positions[currPos]).scrollIntoView({
                 behavior: 'smooth'
             });
@@ -136,66 +199,39 @@ function checkKey(e) {
 
 // Typewriter in main section
 function initTypeWriter() {
-    let app = document.getElementById('app');
-
-    let typewriter = new Typewriter(app, {
-        loop: true,
-        cursorClassName: 'typewriterCursor'
+    const app = new TypewriterLight("app", {
+        speed: 200,
+        cursorSpeed: 500,
+        cursorColor: "#4ecca3",
+        endDot: true,
     });
 
-    typewriter.typeString('developer')
-        .pauseFor(1200)
-        .deleteAll()
-        .typeString('car enthusiast')
-        .pauseFor(1200)
-        .deleteAll()
-        .typeString('prograen')
-        .pauseFor(100)
-        .deleteChars(2)
-        .typeString('mmer')
-        .pauseFor(1200)
-        .deleteAll()
-        .typeString('geek')
-        .pauseFor(1200)
-        .start();
-}
+    app.queue.add(
+        [
+            app.wait.bind(app, 300),
+            app.type.bind(app, "web developer"),
+            app.wait.bind(app, 1000),
+            app.delete.bind(app),
+            app.wait.bind(app, 500),
+            app.type.bind(app, "car enthusiast"),
+            app.wait.bind(app, 1000),
+            app.delete.bind(app),
+            app.wait.bind(500),
+            app.type.bind(app, "prograen"),
+            app.wait.bind(app, 500),
+            app.delete.bind(app, 2),
+            app.wait.bind(app, 500),
+            app.type.bind(app, "mmer"),
+            app.wait.bind(app, 1000),
+            app.delete.bind(app),
+            app.wait.bind(app, 500),
+            app.type.bind(app, "student"),
+            app.wait.bind(app, 500),
+            app.delete.bind(app)
+        ],
+        true
+    );
 
-// Garbage, might delete it later
-function initScroll() {
-    let scrollableElement = document.body;
-
-    scrollableElement.addEventListener('wheel', findScrollDirectionOtherBrowsers);
-
-    function findScrollDirectionOtherBrowsers(event) {
-        let delta;
-
-        if (event.wheelDelta) {
-            delta = event.wheelDelta;
-        } else {
-            delta = -1 * event.deltaY;
-        }
-
-        if (delta < 0) {
-            console.log("DOWN");
-            if (currPos < 3) {
-
-                document.querySelector(positions[currPos + 1]).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                currPos++;
-            }
-        } else if (delta > 0) {
-            console.log("UP");
-            if (currPos > 0) {
-
-                document.querySelector(positions[currPos - 1]).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                currPos--;
-            }
-        }
-
-    }
 }
 
 function about() {
