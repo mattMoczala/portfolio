@@ -4,12 +4,16 @@
 //  Created on 6.10.2019 by Matt Moczala
 //
 
-let positions = ['.nav', '.about', '.projects', '.footer'];
+let positions = ['.nav', '.about', '.projects', 'timeline', '.footer'];
 let currPos = 0;
 let aboutTyped = false,
     projectsTyped = false;
+    timelineTyped = false;
+    mmTyped = false;
 let globe,
     globeCount = 0;
+
+let app;
 
 
 // scrollTop before load, to make sure website is at top
@@ -151,6 +155,30 @@ $(window).scroll(function () {
             false
         );
 
+    } else if (isScrolledIntoView($('#timelineHeader')) && !timelineTyped) {
+        //the div is now visible to user. 
+        timelineTyped = true;
+
+        const app = new TypewriterLight("timelineHeader", {
+            speed: 200,
+            cursorSpeed: 500,
+            cursorColor: "#4ecca3",
+            endDot: true,
+        });
+    
+        app.queue.add(
+            [
+                app.wait.bind(app, 300),
+                app.type.bind(app, "timeline"),
+            ],
+            false
+        );
+    }
+
+    if (isScrolledIntoView($('.scrollDownWrapper'))) {
+        document.getElementById('mainNav').classList.remove('withBorder')
+    } else {
+        document.getElementById('mainNav').classList.add('withBorder')
     }
 });
 
@@ -200,7 +228,7 @@ function checkKey(e) {
 // Typewriter in main section
 function initTypeWriter() {
     const app = new TypewriterLight("app", {
-        speed: 200,
+        speed: 180,
         cursorSpeed: 500,
         cursorColor: "#4ecca3",
         endDot: true,
@@ -211,12 +239,23 @@ function initTypeWriter() {
             app.wait.bind(app, 300),
             app.type.bind(app, "web developer"),
             app.wait.bind(app, 1000),
+            app.delete.bind(app, 7),
+            app.wait.bind(app, 500),
+            app.type.bind(app, "signer"),
+            app.wait.bind(app, 1000),
+            app.delete.bind(app),
+            app.wait.bind(app, 1000),
             app.delete.bind(app),
             app.wait.bind(app, 500),
-            app.type.bind(app, "car enthusiast"),
+            app.type.bind(app, "car guy"),
             app.wait.bind(app, 1000),
             app.delete.bind(app),
             app.wait.bind(500),
+            app.type.bind(app, "watch enthusiast"),
+            app.wait.bind(app, 1000),
+            app.delete.bind(app),
+            app.wait.bind(500),
+
             app.type.bind(app, "prograen"),
             app.wait.bind(app, 500),
             app.delete.bind(app, 2),
@@ -234,16 +273,22 @@ function initTypeWriter() {
 
 }
 
-function about() {
-    document.querySelector('.about').scrollIntoView({
+function goToElement(target) {
+    let targetEle = document.querySelector(target);
+    let pos = targetEle.style.position;
+    let top = targetEle.style.top;
+    targetEle.style.position = 'relative';
+    targetEle.style.top = '-60px';
+    targetEle.scrollIntoView({
         behavior: 'smooth'
     });
+    targetEle.style.top = top;
+    targetEle.style.position = pos;
     currPos = 1;
 }
 
-function projects() {
-    document.querySelector('.projects').scrollIntoView({
+function scrollToMain() {
+    document.querySelector('.main').scrollIntoView({
         behavior: 'smooth'
     });
-    currPos = 2;
 }

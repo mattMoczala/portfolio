@@ -42,10 +42,11 @@
 
 <body>
     <div class="main">
-        <nav class="nav">
-            <div class="navItem"><a class="author" id="navName">Maciej Moczała.</a></div>
-            <div class="navItem pageNav" onclick="about()">about</div>
-            <div class="navItem pageNav" onclick="projects()">projects</div>
+        <nav class="nav" id="mainNav">
+            <div class="navItem"><a class="author" id="navName" onclick="scrollToMain()">Maciej Moczała.</a></div>
+            <div class="aboutNav navItem pageNav" onclick="goToElement('.aboutWrapper')">about</div>
+            <div class="timelineNav navItem pageNav" onclick="goToElement('.timelineWrapper')">timeline</div>
+            <div class="projectsNav navItem pageNav" onclick="goToElement('.projectsWrapper')">projects</div>
         </nav>
         <div class="welcomeWrapper">
             <div class="mainHeader">
@@ -77,13 +78,13 @@
                     </h2>
                     <hr style="margin-bottom: 40px; border: #4ecca3 solid 1px; margin-top: 12px;">
                     <text class="aboutMe">
-                        My name is Maciej Moczała, I'm a 22 year old developer based in Poland. I currently study on Wroclaw University of Science and Technology and specialize in <b>sharepoint</b> web development at <a href="https://it-dev.pl" target="_blank"><b>IT-Dev</b></a>, I've been passionate about the computers since i can remember. Started coding aged 13 few years later I started doing simple on-order websites, then turned towards web-apps build with React.js and backend in Node. What started as my <b>passion and hobby</b> turned out to be an amazing work opportunity.
+                        My name is Maciej Moczała, I'm a 22 year old developer based in Poland. I currently study on Wroclaw University of Science and Technology and specialize in <b>sharepoint</b> web development at <a href="https://it-dev.pl" target="_blank"><b>IT-Dev</b></a>. I've been passionate about the computers since I can remember. What started as my <b>passion and hobby</b> turned out to be an amazing work opportunity.
 
                         <br /><br />
 
                         In spare time always learning, playing board games with friends and watching&nbsp;tv&nbsp;series...
                         <br />
-                        ..oh, I am also trying not to hurt myself while skiing, or kitesurfing haha
+                        ..oh, I am also trying not to hurt myself while skiing, or kitesurfing
                     </text>
                 </div>
             </div>
@@ -116,6 +117,142 @@
             </div>
         </div>
     </div>
+    <div class="timelineWrapper" id="timelineWrapper">
+        <div class="timeline" id="timeline">
+            <h2 style="text-align: left; margin-top: 0px; color: #eee;" id="timelineHeader">
+
+            </h2>
+            <hr class="partial">
+        </div>
+        <div class="main-timeline">
+
+            <!-- start experience section-->
+            <div class="timeline">
+                <div class="icon"></div>
+                <div class="date-content">
+                    <div class="date-outer">
+                        <span class="date">
+                                <span class="month">baby steps</span>
+                        <span class="year">2014</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <h5 class="title">the journey starts here...</h5>
+                    <p class="description">
+                        As a kid I could play minecraft with my friends for hours on and on.
+                        <br />
+                        One time I decided to create a minecraft server so we colud play online, at that time I realised modifing the server and making sure my friends are having fun on the solution I delivered brings me far more joy than actual playing.
+                        <br /><br />
+                        So aged 13 I started coding in <span style="color: #4ecca3; font-weight: 700; font-size: 17px;">Java</span> to modify the gameplay and thats how my development career started. 
+                    </p>
+                </div>
+            </div>
+            <!-- end experience section-->
+
+            <!-- start experience section-->
+            <div class="timeline">
+                <div class="icon"></div>
+                <div class="date-content">
+                    <div class="date-outer">
+                        <span class="date">
+                                <span class="month">kaching</span>
+                        <span class="year">2016</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <h5 class="title">first commercial project</h5>
+                    <p class="description">
+                        Wise men said: <i>"one does always remember his first earned 5 bucks".</i>
+                        <br />
+                        Guy was right, I had my first job as a 15 year old software developer to develop a website for a business.
+                        <br /><br/>
+                        Since then I develop on-order web apps in
+                        <span style="color: #4ecca3; font-weight: 700; font-size: 17px;">React.js</span>
+                        , with 
+                        <span style="color: #4ecca3; font-weight: 700; font-size: 17px;">Express.js</span>,
+                        <span style="color: #4ecca3; font-weight: 700; font-size: 17px;">Next.js</span>, 
+                        <span style="color: #4ecca3; font-weight: 700; font-size: 17px;">MongoDB</span>, 
+                        <span style="color: #4ecca3; font-weight: 700; font-size: 17px;">SQL</span>, 
+                        and many more technologies...
+                    </p>
+                </div>
+            </div>
+            <!-- end experience section-->
+
+            <!-- start experience section-->
+            <div class="timeline">
+                <div class="icon"></div>
+                <div class="date-content">
+                    <div class="date-outer">
+                        <span class="date">
+                                <span class="month">better together</span>
+                        <span class="year">2017</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <h5 class="title">ATMOS - coding group at highschool</h5>
+                    <p class="description">
+                        In highschool me and my friends created a coding group called ATMOS. We've completed many non-commercial projects for coding competitions as well as commercial ones such as Quibus, Laverie, Wisb...
+                        <br />
+                        Now in 2023 <span style="color: #4ecca3; font-weight: 700; font-size: 17px;">after 6 years we're still working together</span>...
+                        <br />
+                        For more info about our work please refer to <a class="projectsNav navItem pageNav" onclick="goToElement('.projectsWrapper')" style="padding: 0px; font-weight: 600;">projects</a> section.
+                        
+                        
+                    </p>
+                </div>
+            </div>
+            <!-- end experience section-->
+
+            <!-- start experience section-->
+            <div class="timeline">
+                <div class="icon"></div>
+                <div class="date-content">
+                    <div class="date-outer">
+                        <span class="date">
+                                <span class="month">formal education</span>
+                        <span class="year">2021</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <h5 class="title">Wrocław University of Science and Technology</h5>
+                    <p class="description">
+                        In 2021 I finished highschool as an IT Technician, aced my matura exams and got accepted into Wrocław University of Science and Technology in the <b>field of Cybersecurity</b>.
+                        <br /><br />
+                        My aim at this study is to learn what a secure app means, how to protect users data and how to design software with security as a core principle.
+                    </p>
+                </div>
+            </div>
+            <!-- end experience section-->
+
+            <!-- start experience section-->
+            <div class="timeline">
+                <div class="icon"></div>
+                <div class="date-content">
+                    <div class="date-outer">
+                        <span class="date">
+                                <span class="month">learn corporate</span>
+                        <span class="year">2022</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <h5 class="title">Sharepoint development</h5>
+                    <p class="description">
+                        At 2022 I've started working in a Digital Workplace creation leading company <a href="https://it-dev.pl" target="_blank"><b>IT-Dev</b></a>, where I create Sharepoint solutions for the biggest of clients.
+                        <br /><br />
+                        My daily work includes communication with bussines clients, delivering SPFX, PowerShell and Azure solutions.
+                    </p>
+                </div>
+            </div>
+            <!-- end experience section-->
+
+        </div>
+    </div>
     <div class="projectsWrapper" id="projectsWrapper">
         <div class="projects">
             <h2 style="text-align: left; margin-top: 0px; color: #eee;" id="projectsHeader">
@@ -131,7 +268,7 @@
                     <a class="projectDescription">
                     many more recent ones...
                     <br /><br />
-                    Unfortunately all classified under NDA :(
+                    but unfortunately classified under NDA.
                     </a>
                 </div>
                 <div class="projectPhotoWrapper">
@@ -148,7 +285,7 @@
                 <hr class="partial" style="margin-bottom: 20px;">
                 <div class="projectDescriptionWrapper">
                     <a class="projectDescription">
-                    Light typewriter npm package, one used on this site for "typing" effect.
+                    Light typewriter npm package, one used on this site for "typing" effect.<div style="margin-top: 20px;"></div>
                     </a>
                 </div>
                 <div class="projectPhotoWrapper">
@@ -166,7 +303,7 @@
                 <hr class="partial" style="margin-bottom: 20px;">
                 <div class="projectDescriptionWrapper">
                     <a class="projectDescription">
-                    WebSocket interface for QMS (Quibus, QuibusDispatcher, QuibusDrive), built with TypeScript
+                    WebSocket interface for QMS (Quibus, QuibusDispatcher, QuibusDrive), built with TypeScript<div style="margin-top: 25px;"></div>
                     </a>
                 </div>
                 <div class="projectPhotoWrapper">
@@ -183,7 +320,7 @@
                 <hr class="partial" style="margin-bottom: 20px;">
                 <div class="projectDescriptionWrapper">
                     <a class="projectDescription">
-                    Biggest realized project so far, POS system developed for laundries.
+                    Biggest freelance project realized so far, POS system developed for laundries.
 
                     Comes standard with innovative laundry process tracking system, client pickup notifications (SMS, email), web panel for administrators, global advanced discount system, advanced revenue and sales statistics, full fiscal printer support and documentation.
                     </a>
@@ -202,7 +339,7 @@
                 <hr class="partial" style="margin-bottom: 20px;">
                 <div class="projectDescriptionWrapper">
                     <a class="projectDescription">
-                    It's a place to upload your photos, once photo is uploaded your link with given amount of keys is generated. Photo is displayed for ten seconds, after exceeding the amount of keys, photo is deleted. I've tried my best to prevent saving the photo and I am still working on a screenshot-blocking algorithm.
+                    It's a place to upload your photos, once photo is uploaded your link with given amount of keys is generated. Photo is displayed for ten seconds, after exceeding the amount of keys, photo is deleted. I've tried my best to prevent saving the photo and I am still working on a screenshot-blocking algorithm.<div style="margin-top: 45px;"></div>
                     </a>
                 </div>
                 <div class="projectPhotoWrapper">
@@ -219,7 +356,7 @@
                 <hr class="partial" style="margin-bottom: 20px;">
                 <div class="projectDescriptionWrapper">
                     <a class="projectDescription">
-                    Core part of QMS (Quibus Management System), system designed with group of my friends. Provides dispatchers with buses localization, buses statistics, allows to send messages to drivers and passengers, view passengers opinions.
+                    Core part of QMS (Quibus Management System), system designed with group of my friends. Provides dispatchers with buses localization, buses statistics, allows to send messages to drivers and passengers, view passengers opinions.<div style="margin-top: 65px;"></div>
                     </a>
                 </div>
                 <div class="projectPhotoWrapper">
@@ -236,7 +373,7 @@
                 <hr class="partial" style="margin-bottom: 20px;">
                 <div class="projectDescriptionWrapper">
                     <a class="projectDescription">
-                        API built for Wisb application. Developed for HackHeroes Competition, wisb is an app with an aim to gather a community of pro-ecological people willing to foucs on cleaning up the world.
+                        API built for Wisb application. Developed for HackHeroes Competition, wisb is an app with an aim to gather a community of pro-ecological people willing to foucs on cleaning up the world.<div style="margin-top: 65px;"></div>
                     </a>
                 </div>
                 <div class="projectPhotoWrapper">
@@ -253,7 +390,7 @@
                 <hr class="partial" style="margin-bottom: 20px;">
                 <div class="projectDescriptionWrapper">
                     <a class="projectDescription">
-                    One-page website with unusual horizontal navigation.
+                    One-page website for a laundry with unusual horizontal navigation.<div style="margin-top: 45px;"></div>
                     </a>
                 </div>
                 <div class="projectPhotoWrapper">
@@ -270,7 +407,7 @@
                 <hr class="partial" style="margin-bottom: 20px;">
                 <div class="projectDescriptionWrapper">
                     <a class="projectDescription">
-                    One-page website for this tool shop with responsive, harsh and technical design that that does it best representing this tool-oriented company.
+                    One-page website for this tool shop with responsive, harsh and technical design that that does it's best representing engineer oriented design.
                     </a>
                 </div>
                 <div class="projectPhotoWrapper">
