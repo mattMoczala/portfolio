@@ -509,6 +509,26 @@ a {
   margin-top: 13px;
 }
 
+@media screen and (max-width: 1024px) {
+  .timeline {
+    margin-top: 80px;
+  }
+  .photo.aboutItem {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .authorPhoto {
+    margin-top:150px;
+    display: block!important;
+  }
+  .social {
+    display: flex !important;
+  }
+}
+
 .main-timeline:before {
   content: "";
   display: block;
