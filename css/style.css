@@ -535,12 +535,13 @@ a {
 
 .main-timeline .timeline .date-outer,
 .main-timeline .timeline .timeline-content {
-  transition: .4s;
+  transition: .33s;
 }
 
 .main-timeline .timeline:hover .date-outer,
 .main-timeline .timeline:hover .timeline-content {
   transform: scale(1.1);
+
 }
 
 .main-timeline .icon {
